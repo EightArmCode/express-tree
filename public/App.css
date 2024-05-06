@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css2?family=Linefont:wght@200&display=swap');
+body {
+  margin: 0;
+}
+.content {
+  height: calc(100vh - 36px);
+  font-family: Raleway, sans-serif;
+  background-color: #073642;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.aside {
+  width: 30%;
+  background-color: #fefdf8;
+  margin-right: 18px;
+  vertical-align: top;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.svg {
+  width: 70%;
+  fill: #fdf6e3;
+  display: flex;
+  overflow-x: auto;
+}
+.bgRect {
+  fill: #fdf6e3;
+}
+.error {
+  color: red;
+}
+.link {
+  /* stroke: #073642; */
+  fill: none;
+  stroke-width: 2;
+  font-family: "Linefont", system-ui;
+  font-optical-sizing: auto;
+  font-weight: 200;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100;
+}
+.leaf circle {
+  fill: #fefdf8;
+  stroke: #073642;
+  stroke-width: 2;
+}
+.leaf .hasChildren {
+  fill:#073642;
+}
+.leaf circle:hover {
+  cursor: pointer;
+  stroke: #cb4b16;
+  fill: #fefdf8;
+}
+.leaf.selected circle {
+  stroke: #cb4b16;
+  fill: #cb4b16;
+}
+.label {
+  font-size: 1.5rem;
+  fill: #073642;
+}
+.leaf.selected .label {
+  fill: #cb4b16;
+}
+.spaceBetween {
+  justify-content: space-between;
+}
+.close {
+  cursor: pointer;
+  width: 10%;
+}
+.inner {
+  padding: 1rem;
+}
+.inner:nth-child(1) {
+  text-transform: capitalize;
+}
+.inner:nth-child(2) {
+  text-align: center;
+}
+.outer {
+  background-color: #fefdf8;
+}
+.outer:nth-child(even) {
+  background-color: #fdf6e3;
+}
+.detailTable {
+  width: 90%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Animation */
+.transGrp-enter-active .inner,
+.transGrp-leave-active .inner {
+  transition: 0.3s opacity ease;
+  transition-property: opacity;
+}
+
+.transGrp-enter-from .inner,
+.transGrp-leave-to .inner {
+  opacity: 0;
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #073642;
+  color: #fdf6e3;
+  font-size: 5rem;
+  font-family: Raleway, sans-serif;
+}
+.error {
+  color: #cb4b16;
+  background-color: #fdf6e3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  font-size: 3rem;
+  font-family: Raleway, sans-serif;
+}

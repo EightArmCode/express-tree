@@ -1,0 +1,16 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model Leaf {
+  parentName  String?
+  name        String  @id @unique
+  description String
+  parent      Leaf?   @relation("LeafToLeaf", fields: [parentName], references: [name], onDelete: Restrict)
+  children    Leaf[]  @relation("LeafToLeaf")
+}
