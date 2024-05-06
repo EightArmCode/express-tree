@@ -40,7 +40,6 @@ app.get('/tree', async(req, res) => {
     tree = await main()
     res.status(200).json(tree)
   } catch (e) {
-    console.error('logger', e)
     res.status(500).json({ error: 'An error occurred' })
   }
   return tree

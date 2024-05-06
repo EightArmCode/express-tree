@@ -34,7 +34,6 @@ body {
   color: red;
 }
 .link {
-  /* stroke: #073642; */
   fill: none;
   stroke-width: 2;
   font-family: "Linefont", system-ui;
@@ -101,14 +100,14 @@ body {
 }
 
 /* Animation */
-.transGrp-enter-active .inner,
-.transGrp-leave-active .inner {
+.fade-enter-active .inner,
+.fade-leave-active .inner {
   transition: 0.3s opacity ease;
   transition-property: opacity;
 }
 
-.transGrp-enter-from .inner,
-.transGrp-leave-to .inner {
+.fade-enter-from .inner,
+.fade-leave-to .inner {
   opacity: 0;
 }
 .loading {

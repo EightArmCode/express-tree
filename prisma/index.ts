@@ -1,4 +1,5 @@
 import { Leaf, PrismaClient } from '@prisma/client'
+import Logger from '../server/logging/winstonLogger.ts'
 
 const prisma = new PrismaClient()
 
@@ -29,7 +30,7 @@ export async function main() {
       },
     })
   } catch (e) {
-    console.error(e)
+    Logger.error(e)
   } finally {
     await prisma.$disconnect()
   }
