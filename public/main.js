@@ -61,7 +61,7 @@ export default {
       loading.value = true
       let res
       try {
-        res = await axios('http://localhost:3000/tree')
+        res = await axios('https://express-tree.onrender.com/tree')
 
       } catch (err) {
         error.value = err

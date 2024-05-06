@@ -30,5 +30,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`🚀 Server ready at: http://localhost:${port}`)
+  console.log(`🚀 Server ready at: https://express-tree.onrender.com/:${port}`)
 })
