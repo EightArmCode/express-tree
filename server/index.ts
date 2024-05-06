@@ -5,6 +5,7 @@ import logger from 'morgan'
 import { main } from '../prisma/index.ts'
 
 const port = process.env.PORT || 3000
+const serverUrl = process.env.NODE_ENV === 'production' ? 'https://express-tree.onrender.com' : 'http://localhost'
 const app = express()
 
 app.use(express.json())
@@ -30,5 +31,5 @@ app.get('/', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`🚀 Server ready at: https://express-tree.onrender.com/:${port}`)
+  console.log(`🚀 Server ready at: ${serverUrl}/:${port}`)
 })
