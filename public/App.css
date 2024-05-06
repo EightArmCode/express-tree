@@ -52,20 +52,24 @@ body {
 .leaf .hasChildren {
   fill:#073642;
 }
-.leaf circle:hover {
+.leaf:hover {
   cursor: pointer;
+}
+.leaf:hover circle,
+.leaf.selected circle {
   stroke: #cb4b16;
   fill: #fefdf8;
 }
-.leaf.selected circle {
-  stroke: #cb4b16;
+.leaf:hover .hasChildren,
+.leaf.selected .hasChildren {
   fill: #cb4b16;
 }
 .label {
   font-size: 1.5rem;
   fill: #073642;
 }
-.leaf.selected .label {
+.leaf.selected .label,
+.leaf:hover .label {
   fill: #cb4b16;
 }
 .spaceBetween {

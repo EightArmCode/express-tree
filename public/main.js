@@ -61,10 +61,10 @@ export default {
       loading.value = true
       let res
       try {
-        res = await axios('https://express-tree.onrender.com/tree')
+        res = await axios('http://localhost:3000/tree')
 
       } catch (err) {
-        error.value = err
+        error.value = 'Well that\'s embarassing! Failed to fetch tree data. Please try again later.'
       } finally {
         loading.value = false
       }
