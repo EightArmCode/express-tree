@@ -5,6 +5,7 @@ import { linkVertical } from 'd3-shape'
 
 export default {
   name: 'Vue-Express-Tree',
+  inject: ['domain'],
   setup() {
     const width = ref(window.innerWidth)
     const height = ref(window.innerHeight)
@@ -58,16 +59,16 @@ export default {
     async function fetchTree() {
       error.value = tree.value = null
       loading.value = true
-      let res
+
       try {
-        res = await axios('http://localhost:3000/tree')
+        const res = await axios('http://localhost:3000/tree')
+        return hierarchy(...res.data)
 
       } catch (err) {
         error.value = 'Well that\'s embarassing! Failed to fetch tree data. Please try again later.'
       } finally {
         loading.value = false
       }
-      return hierarchy(...res.data)
     }
 
     function onClickHandler(leaf) {
