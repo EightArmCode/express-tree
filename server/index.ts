@@ -16,7 +16,7 @@ const port = process.env.PORT || 3000
 const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-const domain = isProd ? 'https://express-tree.onrender.com' : 'http://localhost'
+const domain = isProd ? 'https://express-tree.onrender.com' : `http://localhost:${port}`
 
 app.set('view engine', 'pug')
 app.set('views', './views')
@@ -106,7 +106,7 @@ app.get('/tree', async(req, res) => {
 })
 
 app.get('/', (_req, res) => {
-  res.render('index', { cspNonce: res.locals.cspNonce, domain: `${domain}:${port}` })
+  res.render('index', { cspNonce: res.locals.cspNonce, domain })
 })
 
 app.listen(port, () => {
