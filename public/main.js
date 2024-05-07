@@ -1,22 +1,23 @@
 import { ref, shallowRef, computed, onMounted, watch, inject } from 'vue'
-import { tree as d3Tree, hierarchy } from 'd3-hierarchy'
+import { tree as d3Tree, hierarchy as d3Hierarchy } from 'd3-hierarchy'
 import axios from 'axios'
 import { linkVertical } from 'd3-shape'
 
 export default {
   name: 'Vue-Express-Tree',
   setup() {
+    const domain = inject('domain')
     const width = ref(window.innerWidth)
     const height = ref(window.innerHeight)
-    const domain = inject('domain')
+    const margin = ref(24)
     const selected = ref(null)
     const error = ref(null)
+    const hierarchy = ref(null)
     const loading = ref(false)
     const links = shallowRef(null)
     const tree = shallowRef(null)
     const treeLayout = shallowRef(null)
     const viewBox = computed(() => `0 0 ${boundedWidth.value} ${height.value}`)
-    const margin = ref(24)
     const gTransform = computed(() => `translate(${margin.value}px, ${margin.value}px)`)
     const asideMargin = computed(() => `${margin.value}px`)
     const boundedWidth = ref(getBounded(width.value))
@@ -39,62 +40,74 @@ export default {
 
     onMounted(async() => {
       tree.value = await fetchTree()
-      setupTreeLayout()
-      setupLinks()
+      hierarchy.value = d3Hierarchy(...tree.value.data)
+      treeLayout.value = setupTreeLayout()
+      links.value = setupLinks()
     })
 
+    return {
+      asideMargin,
+      attrs,
+      boundedHeight,
+      boundedWidth,
+      error,
+      gTransform,
+      hasChildren,
+      height,
+      linker,
+      links,
+      loading,
+      margin,
+      onClickHandler,
+      position,
+      selected,
+      tree,
+      treeLayout,
+      viewBox,
+      width,
+    }
+
     function getBounded(side) {
+
       return side - margin.value * 2
     }
 
     function setupTreeLayout() {
-      treeLayout.value = d3Tree()
-        .size([ boundedWidth.value, boundedHeight.value / tree.value.height ])(tree.value)
+
+      return d3Tree()
+        .size([
+          boundedWidth.value,
+          boundedHeight.value / hierarchy.value.height,
+        ])(hierarchy.value)
     }
 
     function setupLinks() {
-      links.value = treeLayout.value.links()
+
+      return hierarchy.value.links()
     }
 
     async function fetchTree() {
+
       error.value = tree.value = null
       loading.value = true
 
       try {
-        const res = await axios(`${domain}/tree`)
-        return hierarchy(...res.data)
+
+        return await axios(`${domain}/tree`)
 
       } catch (err) {
+
         error.value = 'Well that\'s embarassing! Failed to fetch tree data. Please try again later.'
+        console.error(err)
+
       } finally {
+
         loading.value = false
       }
     }
 
     function onClickHandler(leaf) {
       selected.value = leaf
-    }
-
-    return {
-      asideMargin,
-      boundedHeight,
-      boundedWidth,
-      error,
-      gTransform,
-      height,
-      linker,
-      links,
-      loading,
-      margin,
-      position,
-      tree,
-      treeLayout,
-      viewBox,
-      width,
-      selected,
-      onClickHandler,
-      attrs,
-      hasChildren,
     }
   },
   template: /*html*/`
@@ -143,13 +156,24 @@ export default {
                     :key="selected?.data[attr] ?? i"
                     class="spaceBetween outer"
                   >
-                    <td class="inner">{{ attr }}</td>
-                    <td v-if="attr !== 'children'" class="inner">{{ selected?.data[attr] }}</td>
-                    <td class="inner" v-else>
-                      {{ selected?.data.children.map(({ name }) => name).join(', ') }}
+                    <td class="inner">
+                      {{ attr }}
+                    </td>
+
+                    <td v-if="attr !== 'children'" :class="{ 'inner': true, [attr]: true }">
+                      {{ selected?.data[attr] }}
+                    </td>
+
+                    <td v-else :class="{ 'inner': true, [attr]: true }">
+                      {{
+                        selected?.data.children.map(
+                          ({ name }) => name
+                        ).join(', ')
+                      }}
                     </td>
                   </tr>
                 </Transition>
+                <!-- An extra, empty row for visual cushion -->
                 <tr class="spaceBetween outer"><td>&nbsp;</td></tr>
               </tbody>
             </table>
@@ -177,41 +201,45 @@ export default {
               :height="height"
               class="bgRect"
             />
-            <g :style="{ 'transform': gTransform }">
-              <path
-                :style="{ 'transform': gTransform }"
-                v-if="links !== null"
-                v-for="link in links"
-                :d="linker(link)"
-                :stroke="hasChildren(link.target.children) ? '#073642' : '#839496'"
-                class="link"
-              />
-              <g v-if="treeLayout !== null">
-                <g
+            <template v-if="links !== null">
+              <g :style="{ 'transform': gTransform }">
+                <path
                   :style="{ 'transform': gTransform }"
-                  v-for="leaf in treeLayout.descendants()"
-                  :class="{leaf, selected: leaf !== null && selected !== null && leaf.data.name === selected.data.name}"
-                >
-                  <circle
+                  v-for="link in links"
+                  :d="linker(link)"
+                  :stroke="hasChildren(link.target.children) ? '#073642' : '#839496'"
+                  class="link"
+                />
+                <g v-if="treeLayout !== null">
+                  <g
                     @click="onClickHandler(leaf)"
-                    :class="{ hasChildren: hasChildren(leaf?.children) }"
-                    r="10"
-                    :cx="leaf.x"
-                    :cy="leaf.y"
-                  />
-                  <text
-                    :x="leaf.x"
-                    :y="leaf.y"
-                    :dy="hasChildren(leaf.children) ? -10 : 10"
-                    text-anchor="middle"
-                    :dominant-baseline="hasChildren(leaf.children) ? 'text-after-edge' : 'text-before-edge'"
-                    class="label"
+                    :style="{ 'transform': gTransform }"
+                    v-for="leaf in treeLayout.descendants()"
+                    :class="{
+                      leaf,
+                      selected: leaf !== null && selected !== null && leaf.data.name === selected.data.name
+                    }"
                   >
-                    {{ leaf.data.name }}
-                  </text>
+                    <circle
+                      :class="{ hasChildren: hasChildren(leaf?.children) }"
+                      r="10"
+                      :cx="leaf.x"
+                      :cy="leaf.y"
+                    />
+                    <text
+                      :x="leaf.x"
+                      :y="leaf.y"
+                      :dy="hasChildren(leaf.children) ? -10 : 10"
+                      text-anchor="middle"
+                      :dominant-baseline="hasChildren(leaf.children) ? 'text-after-edge' : 'text-before-edge'"
+                      class="label"
+                    >
+                      {{ leaf.data.name }}
+                    </text>
+                  </g>
                 </g>
               </g>
-            </g>
+            </template>
           </svg>
         </div>
       </Transition>

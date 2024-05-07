@@ -8,9 +8,9 @@ datasource db {
 }
 
 model Leaf {
-  parentName  String?
   name        String  @id @unique
   description String
+  parentName  String?
   parent      Leaf?   @relation("LeafToLeaf", fields: [parentName], references: [name], onDelete: Restrict)
   children    Leaf[]  @relation("LeafToLeaf")
 }
