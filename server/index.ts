@@ -83,7 +83,7 @@ app.get('/', (_req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`🚀 Express-Tree Server is ALIVE 😱 and running in ${env.toUpperCase()} mode at: \r${domain} 🚀`)
+  console.log(`🚀 Express-Tree Server is ALIVE 😱 and running in ${env.toUpperCase()} mode at: ${domain} 🚀`)
 })
 
 export { app }

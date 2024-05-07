@@ -382,7 +382,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@stylistic/eslint-plugin@npm:^1.8.0":
+"@stylistic/eslint-plugin@npm:1.8.0":
   version: 1.8.0
   resolution: "@stylistic/eslint-plugin@npm:1.8.0"
   dependencies:
@@ -435,7 +435,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chai@npm:^4.3.16":
+"@types/chai@npm:4.3.16":
   version: 4.3.16
   resolution: "@types/chai@npm:4.3.16"
   checksum: 10c0/745d4a9be429d5d86a7ab26064610b8957fe12dd80e94dc7d0707cf3db1c889e3ffe0d73d69bb15e6d376bf4462a7a75e9d8fc1051750b5d656d6cfe459829b7
@@ -458,7 +458,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cors@npm:^2":
+"@types/cors@npm:2":
   version: 2.8.17
   resolution: "@types/cors@npm:2.8.17"
   dependencies:
@@ -467,7 +467,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-hierarchy@npm:^3.1.7":
+"@types/d3-hierarchy@npm:3.1.7":
   version: 3.1.7
   resolution: "@types/d3-hierarchy@npm:3.1.7"
   checksum: 10c0/873711737d6b8e7b6f1dda0bcd21294a48f75024909ae510c5d2c21fad2e72032e0958def4d9f68319d3aaac298ad09c49807f8bfc87a145a82693b5208613c7
@@ -481,7 +481,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/d3-shape@npm:^3.1.6":
+"@types/d3-shape@npm:3.1.6":
   version: 3.1.6
   resolution: "@types/d3-shape@npm:3.1.6"
   dependencies:
@@ -519,7 +519,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/express@npm:^4.17.21":
+"@types/express@npm:4.17.21":
   version: 4.17.21
   resolution: "@types/express@npm:4.17.21"
   dependencies:
@@ -531,7 +531,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/helmet@npm:^4.0.0":
+"@types/helmet@npm:4.0.0":
   version: 4.0.0
   resolution: "@types/helmet@npm:4.0.0"
   dependencies:
@@ -568,14 +568,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/mocha@npm:^10":
+"@types/mocha@npm:10":
   version: 10.0.6
   resolution: "@types/mocha@npm:10.0.6"
   checksum: 10c0/4526c9e88388f9e1004c6d3937c5488a39908810f26b927173c58d52b43057f3895627dc06538e96706e08b88158885f869ec6311f6b58fd72bdef715f26d6c3
   languageName: node
   linkType: hard
 
-"@types/morgan@npm:^1":
+"@types/morgan@npm:1":
   version: 1.9.9
   resolution: "@types/morgan@npm:1.9.9"
   dependencies:
@@ -584,7 +584,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^20.12.7":
+"@types/node@npm:*, @types/node@npm:20.12.7":
   version: 20.12.7
   resolution: "@types/node@npm:20.12.7"
   dependencies:
@@ -593,7 +593,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/pug@npm:^2.0.10":
+"@types/pug@npm:2.0.10":
   version: 2.0.10
   resolution: "@types/pug@npm:2.0.10"
   checksum: 10c0/6fac37fd84ad4bcf755061caad274db70591699739070bc30c5c1b5f0aecf98646dc29ec8da11cfca82a2b7cc57d949a3ae50aba2f88bf098751ebdd25d9aaea
@@ -667,7 +667,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/supertest@npm:^6.0.2":
+"@types/supertest@npm:6.0.2":
   version: 6.0.2
   resolution: "@types/supertest@npm:6.0.2"
   dependencies:
@@ -684,7 +684,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/vue@npm:^2.0.0":
+"@types/vue@npm:2.0.0":
   version: 2.0.0
   resolution: "@types/vue@npm:2.0.0"
   dependencies:
@@ -693,7 +693,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/winston@npm:^2.4.4":
+"@types/winston@npm:2.4.4":
   version: 2.4.4
   resolution: "@types/winston@npm:2.4.4"
   dependencies:
@@ -736,7 +736,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:7.8.0, @typescript-eslint/parser@npm:^7.8.0":
+"@typescript-eslint/parser@npm:7.8.0":
   version: 7.8.0
   resolution: "@typescript-eslint/parser@npm:7.8.0"
   dependencies:
@@ -1262,7 +1262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.6.8":
+"axios@npm:1.6.8":
   version: 1.6.8
   resolution: "axios@npm:1.6.8"
   dependencies:
@@ -1482,7 +1482,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chai@npm:^5.1.0":
+"chai@npm:5.1.0":
   version: 5.1.0
   resolution: "chai@npm:5.1.0"
   dependencies:
@@ -1771,7 +1771,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cors@npm:^2.8.5":
+"cors@npm:2.8.5":
   version: 2.8.5
   resolution: "cors@npm:2.8.5"
   dependencies:
@@ -1815,7 +1815,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^13.8.1":
+"cypress@npm:13.8.1":
   version: 13.8.1
   resolution: "cypress@npm:13.8.1"
   dependencies:
@@ -2160,7 +2160,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-vue@npm:^9.25.0":
+"eslint-plugin-vue@npm:9.25.0":
   version: 9.25.0
   resolution: "eslint-plugin-vue@npm:9.25.0"
   dependencies:
@@ -2345,41 +2345,41 @@ __metadata:
   resolution: "express-tree@workspace:."
   dependencies:
     "@prisma/client": "npm:5.13.0"
-    "@stylistic/eslint-plugin": "npm:^1.8.0"
-    "@types/chai": "npm:^4.3.16"
-    "@types/cors": "npm:^2"
-    "@types/d3-hierarchy": "npm:^3.1.7"
-    "@types/d3-shape": "npm:^3.1.6"
-    "@types/express": "npm:^4.17.21"
-    "@types/helmet": "npm:^4.0.0"
-    "@types/mocha": "npm:^10"
-    "@types/morgan": "npm:^1"
-    "@types/node": "npm:^20.12.7"
-    "@types/pug": "npm:^2.0.10"
-    "@types/supertest": "npm:^6.0.2"
-    "@types/vue": "npm:^2.0.0"
-    "@types/winston": "npm:^2.4.4"
-    "@typescript-eslint/parser": "npm:^7.8.0"
-    axios: "npm:^1.6.8"
-    chai: "npm:^5.1.0"
-    cors: "npm:^2.8.5"
-    cypress: "npm:^13.8.1"
+    "@stylistic/eslint-plugin": "npm:1.8.0"
+    "@types/chai": "npm:4.3.16"
+    "@types/cors": "npm:2"
+    "@types/d3-hierarchy": "npm:3.1.7"
+    "@types/d3-shape": "npm:3.1.6"
+    "@types/express": "npm:4.17.21"
+    "@types/helmet": "npm:4.0.0"
+    "@types/mocha": "npm:10"
+    "@types/morgan": "npm:1"
+    "@types/node": "npm:20.12.7"
+    "@types/pug": "npm:2.0.10"
+    "@types/supertest": "npm:6.0.2"
+    "@types/vue": "npm:2.0.0"
+    "@types/winston": "npm:2.4.4"
+    "@typescript-eslint/parser": "npm:7.8.0"
+    axios: "npm:1.6.8"
+    chai: "npm:5.1.0"
+    cors: "npm:2.8.5"
+    cypress: "npm:13.8.1"
     eslint: "npm:8.57.0"
-    eslint-plugin-vue: "npm:^9.25.0"
+    eslint-plugin-vue: "npm:9.25.0"
     express: "npm:4.19.2"
-    globals: "npm:^15.1.0"
-    helmet: "npm:^7.1.0"
-    mocha: "npm:^10.4.0"
-    morgan: "npm:^1.10.0"
+    globals: "npm:15.1.0"
+    helmet: "npm:7.1.0"
+    mocha: "npm:10.4.0"
+    morgan: "npm:1.10.0"
     prisma: "npm:5.13.0"
-    pug: "npm:^3.0.2"
-    supertest: "npm:^7.0.0"
+    pug: "npm:3.0.2"
+    supertest: "npm:7.0.0"
     ts-node: "npm:10.9.2"
-    typescript: "npm:^5.4.5"
-    typescript-eslint: "npm:^7.8.0"
-    vue: "npm:^3.4.26"
-    winston: "npm:^3.13.0"
-    winston-daily-rotate-file: "npm:^5.0.0"
+    typescript: "npm:5.4.5"
+    typescript-eslint: "npm:7.8.0"
+    vue: "npm:3.4.26"
+    winston: "npm:3.13.0"
+    winston-daily-rotate-file: "npm:5.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2881,19 +2881,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"globals@npm:15.1.0":
+  version: 15.1.0
+  resolution: "globals@npm:15.1.0"
+  checksum: 10c0/ae9cd15057dc6a21d6dbafe9f47b66bd063c6d3c9215fa1e8294bd130d89f188c48370a11a9525a5a33bd8689fc4fdfd3f474d930692d7abb7459cd982503336
+  languageName: node
+  linkType: hard
+
 "globals@npm:^13.19.0, globals@npm:^13.24.0":
   version: 13.24.0
   resolution: "globals@npm:13.24.0"
   dependencies:
     type-fest: "npm:^0.20.2"
   checksum: 10c0/d3c11aeea898eb83d5ec7a99508600fbe8f83d2cf00cbb77f873dbf2bcb39428eff1b538e4915c993d8a3b3473fa71eeebfe22c9bb3a3003d1e26b1f2c8a42cd
-  languageName: node
-  linkType: hard
-
-"globals@npm:^15.1.0":
-  version: 15.1.0
-  resolution: "globals@npm:15.1.0"
-  checksum: 10c0/ae9cd15057dc6a21d6dbafe9f47b66bd063c6d3c9215fa1e8294bd130d89f188c48370a11a9525a5a33bd8689fc4fdfd3f474d930692d7abb7459cd982503336
   languageName: node
   linkType: hard
 
@@ -2991,7 +2991,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"helmet@npm:*, helmet@npm:^7.1.0":
+"helmet@npm:*, helmet@npm:7.1.0":
   version: 7.1.0
   resolution: "helmet@npm:7.1.0"
   checksum: 10c0/8c3370d07487be11ac918577c68952e05d779a1a2c037023c1ba763034c381a025899bc52f8acfab5209304a1dc618a3764dbfd26386a0d1173befe4fb932e84
@@ -3853,7 +3853,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mocha@npm:^10.4.0":
+"mocha@npm:10.4.0":
   version: 10.4.0
   resolution: "mocha@npm:10.4.0"
   dependencies:
@@ -3891,7 +3891,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"morgan@npm:^1.10.0":
+"morgan@npm:1.10.0":
   version: 1.10.0
   resolution: "morgan@npm:1.10.0"
   dependencies:
@@ -4470,7 +4470,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pug@npm:^3.0.2":
+"pug@npm:3.0.2":
   version: 3.0.2
   resolution: "pug@npm:3.0.2"
   dependencies:
@@ -5056,7 +5056,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"supertest@npm:^7.0.0":
+"supertest@npm:7.0.0":
   version: 7.0.0
   resolution: "supertest@npm:7.0.0"
   dependencies:
@@ -5292,7 +5292,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript-eslint@npm:^7.8.0":
+"typescript-eslint@npm:7.8.0":
   version: 7.8.0
   resolution: "typescript-eslint@npm:7.8.0"
   dependencies:
@@ -5308,7 +5308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.4.5":
+"typescript@npm:5.4.5":
   version: 5.4.5
   resolution: "typescript@npm:5.4.5"
   bin:
@@ -5318,7 +5318,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A^5.4.5#optional!builtin<compat/typescript>":
+"typescript@patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>":
   version: 5.4.5
   resolution: "typescript@patch:typescript@npm%3A5.4.5#optional!builtin<compat/typescript>::version=5.4.5&hash=5adc0c"
   bin:
@@ -5472,7 +5472,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue@npm:*, vue@npm:^3.4.26":
+"vue@npm:*, vue@npm:3.4.26":
   version: 3.4.26
   resolution: "vue@npm:3.4.26"
   dependencies:
@@ -5512,7 +5512,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"winston-daily-rotate-file@npm:^5.0.0":
+"winston-daily-rotate-file@npm:5.0.0":
   version: 5.0.0
   resolution: "winston-daily-rotate-file@npm:5.0.0"
   dependencies:
@@ -5537,7 +5537,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"winston@npm:*, winston@npm:^3.13.0":
+"winston@npm:*, winston@npm:3.13.0":
   version: 3.13.0
   resolution: "winston@npm:3.13.0"
   dependencies:
