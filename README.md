@@ -93,7 +93,7 @@ Instead of using `d3-selection` to traverse the DOM, I leveraged Vue's `v-for` d
 Simple event listening and two-way data binding FTW! Plus a little sprinkling of transition animation which comes out of the box with Vue.
 
 ### Fluid design
-VueJs watches the window size and the SVG and CSS respond accordingly, rendering a very fluid transition from mobile- to desktop-sized screens. _Note: Vue does not react to opening and closing of the dev tools. If dev tools breaks the resonsive fluidity, please reload the page_
+VueJs watches the window size and the SVG and CSS respond accordingly, rendering a very fluid transition from tablet- to desktop-sized screens. _Note: Vue does not react to opening and closing of the dev tools. If dev tools breaks the resonsive fluidity, please reload the page_
 
 ### Visual concepts
 There are a couple of slight differences between parent and child, which make them more easily distinguishable. Theoretically this would aid in scanning larger plots of data.
