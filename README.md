@@ -60,9 +60,9 @@ model Leaf {
 }
 ```
 
-### [Prisma GUI](./screenshots/Screenshot 2024-05-07 at 20.08.52.png)
-[Prisma GUI]
-The CockroachLabs DB is stored on a cluster in the cloud. The handiest way to look into the underpinning data structure is to spin up prisma studio. There you can see all seven rows of Leaf data. The UI is not spectacular, but sometimes it greatly aids DX to visualize.
+### [Prisma GUI](./screenshots/Screenshot%202024-05-07%20at%2020.08.52.png)
+
+The CockroachLabs DB is stored on a cluster in the cloud. The handiest way to see the underpinning data structure for yourself is to spin up prisma studio. There you can see all seven rows of Leaf data. The UI is not spectacular, but sometimes it greatly aids DX to visualize.
 
 ### Prisma type generation
 When type generation is correctly provisioned, it can really add to developer momentum. With this setup, it is possible to **write the schema once, and derive all subsequent types from there.** All types are packed into the `@prisma/client`
@@ -73,7 +73,7 @@ As requested, the API returns a hierarchical structure, i.e. one root node which
 ## Express server
 
 ### Features
-As requested, the backend is written in Express, with a couple of extra features. Custom logging is provided by `Winston` and `Morgan`, plus log rotation configuration. Various security features were provided by `Helmet` and `CORS`. Pug was adopted as the view engine toward the end as a simple way to pass `domain`, `port` variables through to the UI.
+As requested, the backend is written in Express, with a couple of extra features. Custom logging is provided by `Winston` and `Morgan`, plus log rotation configuration. Various security features were provided by `Helmet` and `CORS`. Pug was adopted as the view engine toward the end as a simple way to pass `domain` and `port` variables through to the UI.
 
 ### Endpoints
 `'/'` - Landing page for the tree\
@@ -82,10 +82,10 @@ As requested, the backend is written in Express, with a couple of extra features
 `'/logs'` - Just for fun, visit the console and see
 
 ## Tree UI
-The component function returned by `public/main.js` manages three main content states: `loading`, `error`, and usage of a **D3 Tidy Tree**.
+The component function returned by `public/main.js` manages three main content states: `loading`, `error`, and a **D3 Tidy Tree**.
 
 ### D3.js
-First we must pass the hierarchically shaped response to `d3-hierarchy`. This provides various additional properties to the payload, such as `height` and `depth` fields, which indicate the number of levels deep and an individual objects position in the tree, respectively. It also restructures the data around the relationship between parent and child, sweeping any additional fields into a `data` field. From there, we create use `d3-tree` to create the tree layout and derive the links between parents and their children. Lastly, `d3-shape` is called to create the link generating callback.
+First pass the hierarchically shaped response to `d3-hierarchy`. This provides various additional properties to the payload, such as `height` and `depth` fields, which indicate the number of levels deep and an object's position in the tree, respectively. It also restructures the data around the relationship between parent and child, sweeping any additional fields into a `data` property. From there, use `d3-tree` to create the tree layout and derive the links between parents and their children. Lastly, `d3-shape` is called to create the link generating callback.
 
 Instead of using `d3-selection` to traverse the DOM, I leveraged Vue's `v-for` directive to iterate over the data points and apply the link generating callback to `SVG path elements`. Leaves are represented with `circle elements`, which have `:hover` and `selected` states.
 
@@ -93,7 +93,7 @@ Instead of using `d3-selection` to traverse the DOM, I leveraged Vue's `v-for` d
 Simple event listening and two-way data binding FTW! Plus a little sprinkling of transition animation which comes out of the box with Vue.
 
 ### Fluid design
-VueJs watches the window size and the SVG and CSS respond accordingly, rendering a very fluid transition from tablet- to desktop-sized screens. _Note: Vue does not react to opening and closing of the dev tools. If dev tools breaks the resonsive fluidity, please reload the page_
+VueJs watches the window size, and the SVG and CSS respond accordingly, rendering a very fluid transition from tablet- to desktop-sized screens. _Note: Vue does not react to opening and closing of the dev tools. If dev tools breaks the resonsive fluidity, please reload the page_
 
 ### Visual concepts
 There are a couple of slight differences between parent and child, which make them more easily distinguishable. Theoretically this would aid in scanning larger plots of data.
