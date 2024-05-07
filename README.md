@@ -8,16 +8,16 @@ If you're a "show me the money" type, you can jump right to the good stuff, but 
 - Node v20.10.0
 - yarn@4.1.1
 - express@4.19.2
-- Pug
-- VueJS@3
-- Custom logging
 - Cockroach Labs Cloud DB
 - Prisma ORM
-- Google fonts
 - TypeScript
+- VueJS@3
 - D3.js
+- Winston/Morgan + customized logger
 - Secured by Helmet
-- Testing with Mocha/Chai/Supertest
+- Pug
+- Google fonts
+- Testing with Mocha/Chai/Supertest & Cypress
 - Hosted by Render
 
 ## Usage
