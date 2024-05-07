@@ -1,14 +1,14 @@
-import { ref, shallowRef, computed, onMounted, watch } from 'vue'
+import { ref, shallowRef, computed, onMounted, watch, inject } from 'vue'
 import { tree as d3Tree, hierarchy } from 'd3-hierarchy'
 import axios from 'axios'
 import { linkVertical } from 'd3-shape'
 
 export default {
   name: 'Vue-Express-Tree',
-  inject: ['domain'],
   setup() {
     const width = ref(window.innerWidth)
     const height = ref(window.innerHeight)
+    const domain = inject('domain')
     const selected = ref(null)
     const error = ref(null)
     const loading = ref(false)
@@ -61,7 +61,7 @@ export default {
       loading.value = true
 
       try {
-        const res = await axios('http://localhost:3000/tree')
+        const res = await axios(`${domain}/tree`)
         return hierarchy(...res.data)
 
       } catch (err) {

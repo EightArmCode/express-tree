@@ -3,6 +3,7 @@ import DailyRotateFile from 'winston-daily-rotate-file'
 import { env } from '../index.ts'
 
 const isProd = env === 'production'
+const isTest = env === 'test'
 const level = isProd ? 'warning' : 'debug'
 
 const consoleTransport = new transports.Console({
@@ -32,6 +33,7 @@ const fileCombinedTransport:DailyRotateFile = new DailyRotateFile({
   filename: 'server/logging/logs/combined.log',
   format: format.combine(format.json(), format.timestamp()),
   level: isProd ? 'warning' : 'debug',
+  silent: isTest,
 })
 
 const Logger = createLogger({

@@ -62,6 +62,7 @@ const cspConfig = {
         '\'unsafe-inline\'',
       ],
       'object-src': ['\'none\''],
+      'connect-src': ['\'self\''],
     },
   },
 }
@@ -104,11 +105,12 @@ app.get('/tree', async(req, res) => {
   return tree
 })
 
-app.get('/', (req, res) => {
-  Logger.info('CSP Nonce:', res.locals.cspNonce)
-  res.render('index', { cspNonce: res.locals.cspNonce, domain })
+app.get('/', (_req, res) => {
+  res.render('index', { cspNonce: res.locals.cspNonce, domain: `${domain}:${port}` })
 })
 
 app.listen(port, () => {
-  console.log(`🚀 Express-Tree Server is ALIVE 😱 and running in ${env} mode at: ${domain}:${port} 🚀`)
+  console.log(`🚀 Express-Tree Server is ALIVE 😱 and running in ${env.toUpperCase()} mode at: ${domain}:${port} 🚀`)
 })
+
+export { app }
