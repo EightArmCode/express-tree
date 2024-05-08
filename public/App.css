@@ -30,9 +30,6 @@ body {
 .bgRect {
   fill: #fdf6e3;
 }
-.error {
-  color: red;
-}
 .link {
   fill: none;
   stroke-width: 2;

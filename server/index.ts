@@ -48,7 +48,6 @@ app.use((_req, res, next) => {
 app.use(cspMiddleware)
 app.use(express.static(join(__dirname, '../public')))
 app.use(express.json())
-app.use(express.static('public'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(morganMiddleware)
@@ -64,7 +63,7 @@ app.get('/logs', (req, res) => {
   Logger.http('This is an http log')
   Logger.debug('This is a debug log')
 
-  res.send('Hello world')
+  res.send('Logs can be found in server/logging/logs and are also coloirized and output to the console.')
 })
 
 app.get('/tree', async(req, res) => {

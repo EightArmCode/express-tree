@@ -60,7 +60,8 @@ model Leaf {
 }
 ```
 
-### ![Prisma GUI](./screenshots/Screenshot%202024-05-07%20at%2020.08.52.png)
+### Prisma GUI
+![Screenshot of Prisma GUI containing Leaf data](./screenshots/Screenshot%202024-05-07%20at%2020.08.52.png)
 
 The CockroachLabs DB is stored on a cluster in the cloud. The handiest way to see the underpinning data structure for yourself is to spin up prisma studio. There you can see all seven rows of Leaf data. The UI is not spectacular, but sometimes it greatly aids DX to visualize.
 
@@ -102,10 +103,14 @@ The color scheme is Solarized Light.
 
 ## Testing
 
-### ![Integration](./screenshots/Screenshot%202024-05-07%20at%2020.08.30.png)
+### Integration
+![Screenshot of passing integration tests](./screenshots/Screenshot%202024-05-07%20at%2020.08.30.png)
+_Note: This script runs the server, so you will have to kill the dev server_
 Powered by chai, mocha, and supertest, integration testing ensures the server and api are healthy and returning successful responses. The easiest way to see the data structure returned by the API can be found in the `server/index.test.ts`.
 
-### ![e2e](./screenshots/Screenshot%202024-05-07%20at%2020.06.43.png)
+### e2e
+![Screenshot of passing e2e tests](./screenshots/Screenshot%202024-05-07%20at%2020.06.43.png)
+_Note: Conversely, this script requires that you run the dev server so it can be reached by the tests_
 Fire up the server, visit the homepage, ensure all the elements are there. Additionally verify that clicking the leaves and the close button both update the sidebar.
 
 ## Thank you!
