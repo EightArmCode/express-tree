@@ -11,7 +11,7 @@ If you're a "show me the money" type, you can jump right to the good stuff, but 
 - Cockroach Labs Cloud DB
 - Prisma ORM
 - TypeScript
-- VueJS@3
+- VueJS@3 (via CDN, i.e. without a build step)
 - D3.js
 - Winston/Morgan + customized logger
 - Secured by Helmet
@@ -93,10 +93,10 @@ Instead of using `d3-selection` to traverse the DOM, I leveraged Vue's `v-for` d
 ## Selection sidebar
 Simple event listening and two-way data binding FTW! Plus a little sprinkling of transition animation which comes out of the box with Vue.
 
-### Fluid design
+## Fluid design
 VueJs watches the window size, and the SVG and CSS respond accordingly, rendering a very fluid transition from tablet- to desktop-sized screens. _Note: Vue does not react to opening and closing of the dev tools. If dev tools breaks the resonsive fluidity, please reload the page_
 
-### Visual concepts
+## Visual concepts
 There are a couple of slight differences between parent and child, which make them more easily distinguishable. Theoretically this would aid in scanning larger plots of data.
 
 The color scheme is Solarized Light.
