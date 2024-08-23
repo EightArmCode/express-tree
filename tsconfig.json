@@ -7,6 +7,7 @@
       "dom",
       "esnext",
     ],
+    "removeComments": false,
     "incremental": true, /* Enable incremental compilation */
     "target": "es5", /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 'ES2021', or 'ESNEXT'. */
     "module": "ESNext", /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
@@ -76,16 +77,17 @@
   ],
   "include": [
     "**/*env.d.ts",
+    "*.js",
+    "*.ts",
     "**/*.ts",
-    "jest.config.js",
+    "**/*.js",
     "logs",
     "index.d.ts",
     "prisma/index.ts",
-    "server/index.mjs",
-    "public/main.js",
-    "public/main.js",
-    "server/index.ts",
-    "server/index copy.js",
-    "cypress/fixtures/cypress.config.js",
+    "public/*.js",
+    "server/**/*.ts",
+    "server/**/*.*.ts",
+    "cypress/**/*.js",
+    "cypress/**/*.ts",
   ]
 }

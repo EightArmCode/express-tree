@@ -5,7 +5,7 @@ Hello and welcome to this technical assessment authored by Kat Chilton.
 If you're a "show me the money" type, you can jump right to the good stuff, but please do come back and take the dev setup for a spin on your own machine. https://express-tree.onrender.com/
 
 ## Stack
-- Node v20.10.0
+- Node v22.6.0
 - yarn@4.1.1
 - express@4.19.2
 - Cockroach Labs Cloud DB
@@ -21,13 +21,14 @@ If you're a "show me the money" type, you can jump right to the good stuff, but 
 - Hosted by Render
 
 ## Usage
-To run the app locally, you'll need access to the DB. You should have been provided with a `DATABASE_URL` which must be stored in an `.env` file at the project root, along with the port and web domain for the application server.
+<!-- To run the app locally, you'll need access to the DB. You should have been provided with a `DATABASE_URL` which must be stored in an `.env` file at the project root, along with the port and web domain for the application server.
 
 ```
 DATABASE_URL=<replace this with provided url>
 PORT=3000
 WEB_DOMAIN=http://localhost
-```
+``` -->
+The original cloud DB connection is now disabled, but the new configuration fetches the intended payload from a local JSON file -> feel free to play around with it.
 
 ### Node & Yarn versions
 If your version of node is lagging behind, I strongly recommend using [**nvm**](https://formulae.brew.sh/formula/nvm)(`brew install nvm`) to switch between versions. This project uses the youngest node LTS, v20.
@@ -40,8 +41,8 @@ Additionally, it uses `yarn berry`, for its exceptional speed, but does not make
 `yarn` - Don't forget to install the deps\
 `yarn dev` - Run the application in DEV mode\
 `yarn prod` - Run the application in PROD mode\
-`yarn test` - Run the test suite\
-`yarn e2e` - Run e2e tests\
+`yarn test:unit` - Run the test suite\
+`yarn test:e2e` - Run e2e tests\
 `yarn prisma:validate` - Validate the prisma schema\
 `yarn prisma:generate` - Regenerate the prisma client (and types)\
 `yarn prisma:studio` - Run the PrismaClient GUI
@@ -103,14 +104,14 @@ The color scheme is Solarized Light.
 
 ## Testing
 
-### Integration
+### `yarn run test:unit`
 ![Screenshot of passing integration tests](./screenshots/Screenshot%202024-05-07%20at%2020.08.30.png)
-_Note: This script runs the server, so you will have to kill the dev server_
+_Note: Both test scripts run the server, so you will have to kill the running dev server_
 Powered by chai, mocha, and supertest, integration testing ensures the server and api are healthy and returning successful responses. The easiest way to see the data structure returned by the API can be found in the `server/index.test.ts`.
 
-### e2e
+### `yarn run test:e2e`
 ![Screenshot of passing e2e tests](./screenshots/Screenshot%202024-05-07%20at%2020.06.43.png)
-_Note: Conversely, this script requires that you run the dev server so it can be reached by the tests_
+_Note: Both test scripts run the server, so you will have to kill the running dev server_
 Fire up the server, visit the homepage, ensure all the elements are there. Additionally verify that clicking the leaves and the close button both update the sidebar.
 
 ## Thank you!
