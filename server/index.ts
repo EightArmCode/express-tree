@@ -1,25 +1,28 @@
 import bodyParser from 'body-parser'
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import morganMiddleware from './logging/morganMiddleware.ts'
 import cors from 'cors'
-import { main } from '../prisma/index.ts'
+// import { main } from '../prisma/index.ts'
 import Logger from './logging/winstonLogger.ts'
 import helmet from 'helmet'
 import crypto from 'node:crypto'
 import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import cspConfig from './csp.ts'
+import { asyncMiddleware } from './asyncMiddleware.ts'
 
-export const env = process.env.NODE_ENV || 'development'
+export const env = process.env.NODE_ENV ?? 'development'
 
 const app = express()
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const isProd = env === 'production'
-const port = process.env.PORT || 3000
+const port = process.env.PORT ?? 3000
+
 const cspMiddleware = helmet({
   contentSecurityPolicy: cspConfig.contentSecurityPolicy,
 })
+
 const domain = isProd
   ? 'https://express-tree.onrender.com' // Render sets the PORT environment variable for you
   : `http://localhost:${port}`
@@ -47,6 +50,7 @@ app.use((_req, res, next) => {
 
 app.use(cspMiddleware)
 app.use(express.static(join(__dirname, '../public')))
+
 app.use(express.json())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -66,23 +70,25 @@ app.get('/logs', (req, res) => {
   res.send('Logs can be found in server/logging/logs and are also coloirized and output to the console.')
 })
 
-app.get('/tree', async(req, res) => {
-  let tree = null
-  try {
-    tree = await main()
-    res.status(200).json(tree)
-  } catch (e) {
-    res.status(500).json({ error: 'An error occurred' })
-  }
-  return tree
-})
+app.get('/tree', asyncMiddleware(fetchTree))
 
 app.get('/', (_req, res) => {
-  res.render('index', { cspNonce: res.locals.cspNonce, domain })
+  res.render('index', { cspNonce: res.locals.cspNonce as string, domain })
 })
-
 app.listen(port, () => {
   console.log(`🚀 Express-Tree Server is ALIVE 😱 and running in ${env.toUpperCase()} mode at: ${domain} 🚀`)
 })
 
 export { app }
+
+async function fetchTree(req:Request, res: Response, next: NextFunction):Promise<void> {
+  try {
+    const {tree} = await import('./tree.ts')
+    res.status(200).send(tree)
+    next()
+  } catch (e) {
+    res.status(500).json({ error: 'An error occurred' })
+    Logger.error(e)
+    next(e)
+  }
+}

@@ -1,6 +1,6 @@
-extension: ['ts', 'js']
-spec: ['./**/*.test.ts']
-require: ['ts-node/register']
-recursive: true
 exit: true
+extension: ['ts', 'js']
+recursive: true
+require: tsx
+spec: ['./**/*.test.ts']
 timeout: 20000

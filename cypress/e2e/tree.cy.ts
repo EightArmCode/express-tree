@@ -16,7 +16,6 @@ describe('Vue-Express-Tree', () => {
   it('populates leaf details on click', () => {
     cy.visit('/')
     cy.get('.leaf').eq(1).click()
-
     cy.get('.name').contains('B').should('exist').should('have.length', 1)
     cy.get('.description').contains('This is a description of B').should('exist').should('have.length', 1)
     cy.get('.parentName').contains('A').should('exist').should('have.length', 1)
@@ -26,9 +25,7 @@ describe('Vue-Express-Tree', () => {
   it('clears leaf details on close', () => {
     cy.visit('/')
     cy.get('.leaf').eq(1).click()
-
     cy.get('.close').click()
-
     cy.get('.name').should('have.value', '')
     cy.get('.description').should('have.value', '')
     cy.get('.parentName').should('have.value', '')

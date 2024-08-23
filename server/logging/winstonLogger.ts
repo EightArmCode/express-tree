@@ -1,7 +1,8 @@
 import winston, { createLogger, format, transports } from 'winston'
 import DailyRotateFile from 'winston-daily-rotate-file'
-import { env } from '../index.ts'
+import '@dotenvx/dotenvx'
 
+const env = process.env.NODE_ENV ?? 'development'
 const isProd = env === 'production'
 const isTest = env === 'test'
 const level = isProd ? 'warning' : 'debug'

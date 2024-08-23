@@ -1,21 +1,34 @@
-import { ref, shallowRef, computed, onMounted, watch, inject } from 'vue'
+import { ref, shallowRef, computed, onMounted, watch, inject, defineComponent } from 'vue'
 import { tree as d3Tree, hierarchy as d3Hierarchy } from 'd3-hierarchy'
-import axios from 'axios'
 import { linkVertical } from 'd3-shape'
 
-export default {
-  name: 'Vue-Express-Tree',
+export default defineComponent({
+  name: 'VueExpressTree',
+  inject: ['domain'],
   setup() {
+    /**
+     *  @type string
+     */
     const domain = inject('domain')
     const width = ref(window.innerWidth)
     const height = ref(window.innerHeight)
     const margin = ref(24)
+    /**
+     * @type {import('vue').Ref<Leaf | null>}
+     */
     const selected = ref(null)
     const error = ref(null)
+    /**
+     * @type {import('vue').Ref<import('d3-hierarchy').HierarchyNode<Leaf> | null>}
+     */
     const hierarchy = ref(null)
     const loading = ref(false)
     const links = shallowRef(null)
+    /**
+     * @type {import('vue').Ref<import('d3-hierarchy').HierarchyNode<Leaf> | null>}
+     */
     const tree = shallowRef(null)
+
     const treeLayout = shallowRef(null)
     const viewBox = computed(() => `0 0 ${boundedWidth.value} ${height.value}`)
     const gTransform = computed(() => `translate(${margin.value}px, ${margin.value}px)`)
@@ -23,15 +36,38 @@ export default {
     const boundedWidth = ref(getBounded(width.value))
     const boundedHeight = ref(getBounded(height.value))
     const hasChildren = computed(() => (children) => children !== undefined)
+
+    /**
+     * @typedef {Object} Leaf
+     * @property {number} x
+     * @property {number} y
+     */
+    /**
+     * @type {import('vue').ComputedRef<(link: Leaf)
+     *  => Link<unknown, DefaultLinkObject, [number, number]>}
+     */
     const linker = computed(() =>
       (link) => linkVertical()
-        .x((d) => d.x)
-        .y((d) => d.y)(link),
+        .x(
+          /**
+           * @param {Leaf} d
+           * @returns {number}
+           */
+          (d) => d.x,
+        ).y(
+          /**
+           * @param {Leaf} d
+           * @returns {number}
+           */
+          (d) => d.y)(link),
     )
+    /**
+     * @type {import('vue').ComputedRef<(pos: number) => number>}
+     */
     const position = computed(() => (pos) => pos + margin.value / 2)
     const attrs = [ 'name', 'description', 'parentName', 'children' ]
 
-    watch([ () => width.value, () => height.value ], async() => {
+    watch([ () => width.value, () => height.value ], () => {
       width.value = window.innerWidth
       height.value = window.innerHeight
       boundedHeight.value = getBounded(height.value)
@@ -40,7 +76,7 @@ export default {
 
     onMounted(async() => {
       tree.value = await fetchTree()
-      hierarchy.value = d3Hierarchy(...tree.value.data)
+      hierarchy.value = d3Hierarchy(...tree.value)
       treeLayout.value = setupTreeLayout()
       links.value = setupLinks()
     })
@@ -72,6 +108,8 @@ export default {
       return side - margin.value * 2
     }
 
+    /** @returns {import('d3-hierarchy').TreeLayout<Leaf>} */
+
     function setupTreeLayout() {
 
       return d3Tree()
@@ -86,14 +124,30 @@ export default {
       return hierarchy.value.links()
     }
 
+    /**
+     * @async
+     * @function fetchTree
+     * @returns {Promise<Leaf[]>}
+     * */
     async function fetchTree() {
 
       error.value = tree.value = null
       loading.value = true
 
-      try {
+      const url = (new URL('tree', domain)).toString()
 
-        return await axios(`${domain}/tree`)
+      try {
+        /** @type {globalThis.Response} */
+        const res = await fetch(url)
+
+        if (!res.ok) {
+          throw new Error(`Failed to fetch tree data. Status: ${res.status}`)
+        }
+        /** @type {Leaf[]} */
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+        const json = await res.json()
+
+        return json
 
       } catch (err) {
 
@@ -106,6 +160,12 @@ export default {
       }
     }
 
+    /**
+     *
+     * @type {Function} Leaf
+     * @param {Leaf} leaf
+     * @returns {void}
+     */
     function onClickHandler(leaf) {
       selected.value = leaf
     }
@@ -245,4 +305,4 @@ export default {
       </Transition>
     </div>
   `,
-}
+})
